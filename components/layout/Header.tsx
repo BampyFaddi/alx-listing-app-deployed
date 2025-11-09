@@ -1,22 +1,22 @@
 import React from "react";
+import { Search } from "lucide-react";
 
 const Header: React.FC = () => {
-  const navLinks = ["Home", "About", "Properties"];
-  const accommodations = ["Rooms", "Mansion", "Countryside", "Villa", "Apartment"];
+  const navLinks = ["Stays", "Flights", "Car Rentals", "Attractions"];
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto flex items-center justify-between p-4">
+    <header className="bg-brand-blue text-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between p-4">
         {/* Logo */}
-        <div className="text-2xl font-bold text-blue-600">ALX Listings</div>
+        <div className="text-2xl font-bold tracking-tight">ALX Listings</div>
 
-        {/* Navigation Links */}
-        <nav className="hidden md:flex space-x-6">
+        {/* Nav Links */}
+        <nav className="flex space-x-6 mt-2 md:mt-0">
           {navLinks.map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-gray-700 hover:text-blue-600 font-medium"
+              href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
+              className="hover:text-brand-lightBlue transition-colors"
             >
               {link}
             </a>
@@ -24,39 +24,13 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Search Bar */}
-        <div className="hidden md:flex items-center space-x-2">
+        <div className="hidden md:flex items-center bg-white rounded-full px-3 py-1 text-gray-700 shadow-soft">
+          <Search size={18} className="text-gray-500 mr-2" />
           <input
             type="text"
-            placeholder="Search properties..."
-            className="border rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Search destinations"
+            className="focus:outline-none bg-transparent text-sm w-40"
           />
-          <button className="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700">
-            Search
-          </button>
-        </div>
-
-        {/* Sign In / Sign Up */}
-        <div className="flex items-center space-x-2">
-          <button className="text-gray-700 hover:text-blue-600 font-medium hidden md:block">
-            Sign In
-          </button>
-          <button className="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700">
-            Sign Up
-          </button>
-        </div>
-      </div>
-
-      {/* Accommodation Types */}
-      <div className="bg-gray-100 py-2">
-        <div className="container mx-auto flex space-x-4 overflow-x-auto">
-          {accommodations.map((type) => (
-            <span
-              key={type}
-              className="bg-white border px-3 py-1 rounded-full text-gray-700 hover:bg-blue-50 cursor-pointer whitespace-nowrap"
-            >
-              {type}
-            </span>
-          ))}
         </div>
       </div>
     </header>

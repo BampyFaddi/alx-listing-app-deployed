@@ -1,30 +1,23 @@
 import React from "react";
 
 const Footer: React.FC = () => {
-  const footerLinks = ["About Us", "Contact", "Privacy Policy", "Terms of Service"];
+  const links = ["About", "Contact", "Privacy", "Terms"];
 
   return (
-    <footer className="bg-gray-800 text-white mt-10">
+    <footer className="bg-brand-blue text-white mt-10">
       <div className="container mx-auto py-6 flex flex-col md:flex-row justify-between items-center">
-        {/* Logo / Brand */}
-        <div className="text-xl font-bold mb-4 md:mb-0">ALX Listings</div>
+        <div className="text-lg font-semibold">© {new Date().getFullYear()} ALX Listings</div>
 
-        {/* Links */}
-        <div className="flex flex-wrap justify-center space-x-4 mb-4 md:mb-0">
-          {footerLinks.map((link) => (
+        <div className="flex space-x-6 mt-3 md:mt-0">
+          {links.map((link) => (
             <a
               key={link}
-              href={`#${link.replace(/\s+/g, "-").toLowerCase()}`}
-              className="hover:text-blue-400"
+              href={`#${link.toLowerCase()}`}
+              className="text-gray-200 hover:text-white transition-colors"
             >
               {link}
             </a>
           ))}
-        </div>
-
-        {/* Copyright */}
-        <div className="text-gray-400 text-sm">
-          &copy; {new Date().getFullYear()} ALX Listings. All rights reserved.
         </div>
       </div>
     </footer>
@@ -32,4 +25,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-
